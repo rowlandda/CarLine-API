@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @Validated
-public class StudentAllRestController {
+public class StudentRestController {
     @Autowired
     private StudentsAllRepository studentsAllRepository;
     @Autowired
@@ -51,6 +51,7 @@ public class StudentAllRestController {
         return new ResponseEntity<>(studentsLineRepository.save(lineStudent), HttpStatus.CREATED);
     }
 
+    //remove a student from the car-line collection (i.e. they have been picked up)
     @RequestMapping(value = "/line/{_id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteStudentFromLine(@PathVariable("_id") String _id) {
         studentsLineRepository.delete(studentsLineRepository.findBy_id(_id));
