@@ -17,4 +17,4 @@ In your IDE you need to create a new project from existing sources.  In IntelliJ
 
 If everything works you should be able to run the application and in the IDE and it will output some spring boot related information in the terminal.
 
-With the application running you should be able to go to `localhost:8080/all/students` in a web browser and see a list of JSON formatted student objects cooresponding to the contents of the MongoDB.
+With the application running you should be able to go to `localhost:8080/all` in a web browser and see a list of JSON formatted student objects cooresponding to the contents of the MongoDB.
