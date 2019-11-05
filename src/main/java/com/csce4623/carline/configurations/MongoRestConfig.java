@@ -10,6 +10,11 @@ import org.springframework.data.mongodb.core.convert.DefaultMongoTypeMapper;
 import org.springframework.data.mongodb.core.convert.MappingMongoConverter;
 import org.springframework.data.mongodb.core.mapping.MongoMappingContext;
 
+/*
+This configuration makes sure that Spring doesn't create a field in new objects
+with the package and class name of the object
+ */
+
 @Configuration
 public class MongoRestConfig {
     @Autowired

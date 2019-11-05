@@ -1,4 +1,4 @@
-#Installation
+<h2>Installation</h2>
 
 <ul>
 <li>First install MongoDB and MongoDB Compass on your local machine and start a local instance.</li>
@@ -24,7 +24,7 @@ port.</li>
 <li>With the application running you should be able to go to <code>localhost:8080/all</code> in a web browser and see a list of JSON formatted student objects cooresponding to the contents of the MongoDB.</li>
 </ul>
 
-##Endpoints
+<h3>Endpoints</h3>
 
 Get list of all students ------- `GET localhost:8080/all`\
 Get student by id----------`GET localhost:8080/all/{id}`\
