@@ -45,7 +45,7 @@ public class StudentRestController {
         }
     }
 
-    //get all students currently in the car-line
+    //get all students currently in the carline
     @RequestMapping(value = "/line", method = RequestMethod.GET)
     public ResponseEntity<?> getAllStudentsInLine() {
         List<LineStudent> students = studentsLineRepository.findAll();
@@ -69,19 +69,19 @@ public class StudentRestController {
     public ResponseEntity<?> addStudentToLineWithPosition(@PathVariable("_id") String _id,
                                                           @PathVariable("position") int position) {
         Student student = studentsAllRepository.findBy_id(_id);
-        LineStudent lineStudent = new LineStudent(student);
-        lineStudent.setPosition(position);
+        LineStudent lineStudent = new LineStudent(student)
+                                        .setPosition(position);
         return new ResponseEntity<>(studentsLineRepository.save(lineStudent), HttpStatus.CREATED);
     }
 
-    //remove a student from the car-line collection (i.e. they have been picked up)
+    //remove a student from the carline collection (i.e. they have been picked up)
     @RequestMapping(value = "/line/{_id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteStudentFromLine(@PathVariable("_id") String _id) {
         studentsLineRepository.delete(studentsLineRepository.findBy_id(_id));
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    //clear the entire car-line
+    //clear the entire carline
     @RequestMapping(value = "/line/clear", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteLine() {
         studentsLineRepository.deleteAll();
