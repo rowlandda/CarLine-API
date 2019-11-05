@@ -63,6 +63,9 @@ public class LineStudent {
         this.position = pos;
         return this;
     }
+    public int getPosition() {
+        return this.position;
+    }
 
 
     public LineStudent() {}

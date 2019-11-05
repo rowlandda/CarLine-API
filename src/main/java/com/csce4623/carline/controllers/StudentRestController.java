@@ -16,8 +16,10 @@ import java.util.List;
 @RestController
 @Validated
 public class StudentRestController {
+    //collection of all student data
     @Autowired
     private StudentsAllRepository studentsAllRepository;
+    //collection of cars/parents currently in the line
     @Autowired
     private StudentsLineRepository studentsLineRepository;
 
@@ -43,6 +45,17 @@ public class StudentRestController {
         }
     }
 
+    //get all students currently in the car-line
+    @RequestMapping(value = "/line", method = RequestMethod.GET)
+    public ResponseEntity<?> getAllStudentsInLine() {
+        List<LineStudent> students = studentsLineRepository.findAll();
+        if (students == null) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } else {
+            return new ResponseEntity<>(students, HttpStatus.OK);
+        }
+    }
+
     //add a student to the carline
     @RequestMapping(value = "/line/{_id}", method = RequestMethod.POST)
     public ResponseEntity<?> addStudentToLine(@PathVariable("_id") String _id) {
@@ -51,10 +64,27 @@ public class StudentRestController {
         return new ResponseEntity<>(studentsLineRepository.save(lineStudent), HttpStatus.CREATED);
     }
 
+    //add a student to the carline with position in line
+    @RequestMapping(value = "/line/{_id}/{position}", method = RequestMethod.POST)
+    public ResponseEntity<?> addStudentToLineWithPosition(@PathVariable("_id") String _id,
+                                                          @PathVariable("position") int position) {
+        Student student = studentsAllRepository.findBy_id(_id);
+        LineStudent lineStudent = new LineStudent(student);
+        lineStudent.setPosition(position);
+        return new ResponseEntity<>(studentsLineRepository.save(lineStudent), HttpStatus.CREATED);
+    }
+
     //remove a student from the car-line collection (i.e. they have been picked up)
     @RequestMapping(value = "/line/{_id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteStudentFromLine(@PathVariable("_id") String _id) {
         studentsLineRepository.delete(studentsLineRepository.findBy_id(_id));
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    //clear the entire car-line
+    @RequestMapping(value = "/line/clear", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deleteLine() {
+        studentsLineRepository.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
