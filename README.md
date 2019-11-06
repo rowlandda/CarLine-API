@@ -11,7 +11,7 @@ port.</li>
 
 <li>(Assume you have installed python3 and pip.  If not, install these first)
 <ul>
-<li>run <code>pip install pymongo`</code></li>
+<li>run <code>pip install pymongo</code></li>
 <li>then <code>python3 populate-localDB.py students create</code></li>
 </ul>
 </li>

@@ -11,53 +11,7 @@ from the collection containing data on all students
 */
 
 @Document(collection = "Students-line")
-public class LineStudent {
-    @Id
-    private String _id;
-    public LineStudent set_id(String _id) {
-        this._id = _id;
-        return this;
-    }
-    public String get_id() {
-        return this._id;
-    }
-
-    private String name;
-    public LineStudent setName(String name) {
-        this.name = name;
-        return this;
-    }
-    public String getName() {
-        return this.name;
-    }
-
-    private int grade;
-    public LineStudent setGrade(int grade) {
-        this.grade = grade;
-        return this;
-    }
-    public int getGrade() {
-        return this.grade;
-    }
-
-    private int room;
-    public LineStudent setRoom(int room) {
-        this.room = room;
-        return this;
-    }
-    public int getRoom() {
-        return this.room;
-    }
-
-    private String[] cars;
-    public LineStudent setCars(String[] cars) {
-        this.cars = cars;
-        return this;
-    }
-    public String[] getCars() {
-        return this.cars;
-    }
-
+public class LineStudent extends StudentAbstract{
     private int position;
     public LineStudent setPosition(int pos) {
         this.position = pos;
@@ -67,14 +21,9 @@ public class LineStudent {
         return this.position;
     }
 
-
-    public LineStudent() {}
     public LineStudent(int pos, String name, int grade, int room, String[] cars) {
+        super(name, grade, room, cars);
         this.position = pos;
-        this.name = name;
-        this.grade = grade;
-        this.room = room;
-        this.cars = cars;
     }
 
     public LineStudent(Student student) {
