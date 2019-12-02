@@ -1,6 +1,7 @@
 package com.csce4623.carline.models;
 
   import org.springframework.data.annotation.Id;
+  import org.springframework.data.annotation.PersistenceConstructor;
   import org.springframework.data.mongodb.core.mapping.Document;
 
 /*
@@ -13,17 +14,18 @@ from the collection containing data on all students
 @Document(collection = "Students-line")
 public class LineStudent extends StudentAbstract{
     private int position;
-    public LineStudent setPosition(int pos) {
-        this.position = pos;
+    public LineStudent setPosition(int position) {
+        this.position = position;
         return this;
     }
     public int getPosition() {
         return this.position;
     }
 
-    public LineStudent(int pos, String name, int grade, int room, String[] cars) {
+    @PersistenceConstructor
+    public LineStudent(int position, String name, int grade, int room, String[] cars) {
         super(name, grade, room, cars);
-        this.position = pos;
+        this.position = position;
     }
 
     public LineStudent(Student student) {

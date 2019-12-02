@@ -82,7 +82,7 @@ public class StudentRestController {
     }
 
     //clear the entire carline
-    @RequestMapping(value = "/line/clear", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/line", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteLine() {
         studentsLineRepository.deleteAll();
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

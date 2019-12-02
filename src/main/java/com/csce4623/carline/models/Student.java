@@ -9,7 +9,4 @@ info on every student in the school for reference
 
 @Document(collection = "Students-all")
 public class Student extends StudentAbstract {
-    public Student(String name, int grade, int room, String[] cars) {
-        super(name, grade, room, cars);
-    }
 }
