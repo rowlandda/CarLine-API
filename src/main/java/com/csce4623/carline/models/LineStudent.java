@@ -31,6 +31,7 @@ public class LineStudent extends StudentAbstract{
     public LineStudent(Student student) {
         this._id = student.get_id();
         this.position = 0;
+        this.grade = student.getGrade();
         this.name = student.getName();
         this.room = student.getRoom();
         this.cars = student.getCars();
